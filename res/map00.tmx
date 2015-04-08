@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="10" tilewidth="32" tileheight="32" nextobjectid="9">
+ <tileset firstgid="1" name="background" tilewidth="32" tileheight="32">
+  <image source="background.png" width="480" height="320"/>
+ </tileset>
+ <layer name="background" width="20" height="10">
+  <data encoding="base64" compression="zlib">
+   eJyNy1dbD2AAxuF/AymJJiqV0RLJLLTLpmkWlZa9EqGpKBln+bzd75mD96CD+/odPNeTlEgkkkkhlW1sZwdp7CSdDHaRyW6yIg32sJdscsglj3wK2Md+DlBIEcUcjDQooZQyDnGYIxylnAoqqaKaY9RwPNLgBLWcpI5TnOYMZznHeepp4AIXuRRp0EgTzbTQShvtdNDJZa5wlWtc50akwU1ucZsuuumhlz76ucNd7nGfBzyMNBhgkEc8ZohhRnjCKGOMM8EkT3kWafCcF7zkFa95w1ve8Z4pPjDNRz4xE2nwmS98ZZY55llgkSW+scwK3/nBaqTht8ZP1vnFb/7wdwvbBv/+a9g2ARegO/Y=
+  </data>
+ </layer>
+</map>

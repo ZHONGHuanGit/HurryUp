@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="10" tilewidth="32" tileheight="32" nextobjectid="9">
+ <tileset firstgid="1" name="map" tilewidth="32" tileheight="32">
+  <image source="../WorkStation/Cocos2d-js/cocos-docs-master/tutorial/framework/html5/parkour-game-with-javascript-v3.0/chapter10/res/Parkour/res/map.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="17" name="background" tilewidth="32" tileheight="32">
+  <image source="background.png" width="480" height="320"/>
+ </tileset>
+ <layer name="background" width="20" height="10">
+  <data encoding="base64" compression="zlib">
+   eJyNy1dbD2AAxuH/V2ggJdFEpTJaIpmFdtk0zaLSslciNBUl4yyfs/s9c/AedHBfv4PnepISiUQyKaSyje3sII2dpJPBLjLZTVakwR72kk0OueSRTwH72M8BCimimIORBiWUUsYhDnOEo5RTQSVVVHOMGo5HGpyglpPUcYrTnOEs5zhPPQ1c4CKXIg0aaaKZFlppo50OOrnMFa5yjevciDS4yS1u00U3PfTSRz93uMs97vOAh5EGAwzyiMcMMcwITxhljHEmmOQpzyINnvOCl7ziNW94yzveM8UHpvnIJ2YiDT7zha/MMsc8CyyyxDeWWeE7P1iNNPzW+Mk6v/jNH/5uYdvg338N2ya5vUh2
+  </data>
+ </layer>
+</map>
