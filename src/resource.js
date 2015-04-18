@@ -8,14 +8,13 @@ var res = {
     buttonUp_png: "res/buttonUp.png",
     buttonDown_png : "res/buttonDown.png",
     map_png : "res/map.png",
-    map00_tmx : "res/map00.tmx",
-    map01_tmx : "res/map01.tmx",
-    bg_png : "res/background.png",
-    mushroomUp : "res/mushroomUp.png",
-    mushroomDown : "res/mushroomDown.png",
+    bg_png : "res/background.jpg",
+    sharpUp : "res/sharpUp.png",
+    sharpDown : "res/sharpDown.png",
     egg_png : "res/egg.png",
     player_png : "res/player.png",
-    player_plist : "res/player.plist"
+    player_plist : "res/player.plist",
+    line_png : "res/line.png"
 };
 
 var g_resources = [];

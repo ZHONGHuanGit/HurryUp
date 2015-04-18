@@ -56,4 +56,5 @@ cc.game.onStart = function(){
         cc.director.runScene(new MainScene());
     }, this);
 };
+
 cc.game.run();

@@ -17,6 +17,11 @@ var BackgroundLayer = cc.Layer.extend({
     // mushroom
     mushrooms : [],
 
+    //标记当前mushroom是否越过
+    isOver : [],
+
+    overNum : 0,
+
     // 标记mushroom的朝向,0表示向上，1表示向下
     mushroomsTag : [],
 
@@ -50,8 +55,8 @@ var BackgroundLayer = cc.Layer.extend({
         this.addChild(this.map01);
 
 
-        this.mushPos = [cc.p(180, 160), cc.p(260, 160), cc.p(340, 160), cc.p(420, 160),
-            cc.p(40, 160), cc.p(140, 160), cc.p(240, 160), cc.p(420, 160)];
+        this.mushPos = [cc.p(120, 160), cc.p(240, 160), cc.p(340, 160), cc.p(440, 160),
+            cc.p(80, 160), cc.p(180, 160), cc.p(320, 160), cc.p(460, 160) ];
 
         this.createMushrooms(0);
         this.createMushrooms(1);
@@ -74,21 +79,19 @@ var BackgroundLayer = cc.Layer.extend({
             this.mushroomsTag[i] = id;
 
             var sp = null;
-            if(id == 0){
-                sp =  new cc.Sprite(res.mushroomUp);
-                sp.attr({
-                    anchorX: 0.5,
-                    anchorY: 0
-                });
+
+            if(id == 1 ){
+                sp =  new cc.Sprite(res.sharpUp);
+
             }else{
-                sp = new cc.Sprite(res.mushroomDown);
-                sp.attr({
-                    anchorX: 0.5,
-                    anchorY: 1
-                });
+                sp = new cc.Sprite(res.sharpDown);
+
             }
 
             sp.setPosition(this.mushPos[i]);
+            sp.attr({
+                anchorX : 0.5
+            })
 
             this.mushrooms[i] = sp;
 
@@ -97,6 +100,9 @@ var BackgroundLayer = cc.Layer.extend({
             }else{
                 this.map01.addChild(sp);
             }
+
+            this.isOver[i] = 0;
+
         }
     },
 
@@ -116,6 +122,7 @@ var BackgroundLayer = cc.Layer.extend({
 
     //检查是否发生碰撞
     //两个参数，一个表示检测的地图，一个表示当前player的朝向,0表示向上，1表示向下
+    //在检查过程中，同时计算走过的mushroom数
     checkCollision : function(mapID, dir){
 
         var val = 0;
@@ -123,7 +130,7 @@ var BackgroundLayer = cc.Layer.extend({
             val = mushNum;
         }
 
-        //console.log("dir:"+dir);
+        console.log("dir:"+dir);
 
         //屏幕所在map的最右边位置。
         var posX = this.getPosition().x + (mapID==0? this.map00.getPosition().x:this.map01.getPosition().x);
@@ -137,9 +144,15 @@ var BackgroundLayer = cc.Layer.extend({
             //
             //console.log("abs:"+Math.abs(tempX+posX - beginX));
 
-            if(dir == this.mushroomsTag[i]   &&  Math.abs(tempX+posX - beginX) < 20)
+            if(dir == this.mushroomsTag[i]   &&  Math.abs(tempX+posX - beginX) < collisionAccuracy )
             {
+                //console.log("i: "+ i+"    mushroom tag:"+this.mushroomsTag[i]+"  tempX:"+tempX +"    posX:"+posX);
                 return true;//  假设绝对值小于20  相当于发生碰撞
+            }
+
+            if(tempX + posX < beginX && this.isOver[i]==0){
+                this.isOver[i] = 1;
+                this.overNum++;
             }
         }
 
