@@ -20,8 +20,6 @@ var BackgroundLayer = cc.Layer.extend({
     //标记当前mushroom是否越过
     isOver : [],
 
-    overNum : 0,
-
     // 标记mushroom的朝向,0表示向上，1表示向下
     mushroomsTag : [],
 
@@ -80,7 +78,7 @@ var BackgroundLayer = cc.Layer.extend({
 
             var sp = null;
 
-            if(id == 1 ){
+            if(id == 0 ){
                 sp =  new cc.Sprite(res.sharpUp);
 
             }else{
@@ -130,8 +128,6 @@ var BackgroundLayer = cc.Layer.extend({
             val = mushNum;
         }
 
-        console.log("dir:"+dir);
-
         //屏幕所在map的最右边位置。
         var posX = this.getPosition().x + (mapID==0? this.map00.getPosition().x:this.map01.getPosition().x);
 
@@ -152,7 +148,7 @@ var BackgroundLayer = cc.Layer.extend({
 
             if(tempX + posX < beginX && this.isOver[i]==0){
                 this.isOver[i] = 1;
-                this.overNum++;
+                points++;
             }
         }
 

@@ -16,6 +16,7 @@
         "src/app.js",
         "src/player.js",
         "src/backgroundLayer.js",
-        "src/HUD.js"
+        "src/HUD.js",
+        "src/GameOver.js"
     ]
 }

@@ -13,3 +13,7 @@ var moveTime = 0.5; //每次移动经历的时长
 var mushNum = 4;
 
 var collisionAccuracy = 40;
+
+var points = 0;
+
+var times = 30;

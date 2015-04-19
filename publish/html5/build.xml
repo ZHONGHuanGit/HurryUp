@@ -176,6 +176,7 @@
                 <file name="src/player.js"/>
                 <file name="src/backgroundLayer.js"/>
                 <file name="src/HUD.js"/>
+                <file name="src/GameOver.js"/>
                 <file name="main.js"/>
 
             </sources>

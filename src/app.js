@@ -4,13 +4,12 @@ var MainLayer = cc.Layer.extend({
     bgLayer : null,
 
     spritePlayerUp:null,
+
     spritePlayerDown : null,
 
     spriteSheet : null,
 
     isUp : null,
-
-
 
     line : null,
 
@@ -18,7 +17,6 @@ var MainLayer = cc.Layer.extend({
 
     buttonUpItem : null,
     buttonDownItem : null,
-
 
     runningActionUp : null,
     runningActionDown : null,
@@ -38,6 +36,8 @@ var MainLayer = cc.Layer.extend({
     init : function () {
         this._super();
 
+        document.getElementById("shareImg").innerHTML= "";
+
         //添加BackgoundLayer
         this.bgLayer = new BackgroundLayer();
         this.addChild(this.bgLayer);
@@ -56,7 +56,7 @@ var MainLayer = cc.Layer.extend({
             this);
 
         this.buttonUpItem.attr({
-            x: 180,
+            x: 140,
             y: 40,
             anchorX: 0.5,
             anchorY: 0.5
@@ -70,7 +70,7 @@ var MainLayer = cc.Layer.extend({
             this);
 
         this.buttonDownItem.attr({
-            x: winsize.width - 180,
+            x: winsize.width - 140,
             y: 40,
             anchorX: 0.5,
             anchorY: 0.5
@@ -147,10 +147,12 @@ var MainLayer = cc.Layer.extend({
         this.addChild(this.hud);
 
 
+        // 设定每隔1秒执行一次updateTime
         this.schedule(this.updataTime,1,cc.REPEAT_FOREVER , 0);
 
     },
-    
+
+    // 每隔1秒需要更新time label
     updataTime : function () {
 
         this.hud.time--;
@@ -158,13 +160,16 @@ var MainLayer = cc.Layer.extend({
         this.hud.timeLabel.string = this.hud.time;
 
         if(this.hud.time <= 0){
-
+            this.gameOver();
         }
     },
-    
+
+    // 比赛结束
     gameOver : function () {
 
-
+        //var gv = new GameOverScene();
+        //gv.points =
+        cc.director.runScene(new GameOverScene());
 
     },
     
@@ -180,22 +185,33 @@ var MainLayer = cc.Layer.extend({
         //    ));
         //
 
+        // player 朝向上为0   下为1
+        var dir = this.isUp ? 0 : 1;
+
+        //检测是否发生碰撞
+        if(this.bgLayer.checkCollision(0,dir) || this.bgLayer.checkCollision(1,dir)){
+            //console.log("发生碰撞了！");
+            //console.log("");
+            this.gameOver();
+        }
+
         this.eyeX += moveStep ;
 
         this.bgLayer.checkAndReload(this.eyeX);
         this.bgLayer.setPosition(cc.p(-this.eyeX,0));
 
-        var dir = this.isUp ? 0 : 1;
+
 
         //检测是否发生碰撞
         if(this.bgLayer.checkCollision(0,dir) || this.bgLayer.checkCollision(1,dir)){
-            console.log("发生碰撞了！");
-            console.log("");
+            //console.log("发生碰撞了！");
+            //console.log("");
+            this.gameOver();
         }
 
         //console.log("over num : "+this.bgLayer.overNum);
 
-        this.hud.label.string = this.bgLayer.overNum;
+        this.hud.label.string = points;
 
 
 
@@ -220,9 +236,6 @@ var MainLayer = cc.Layer.extend({
     //按向下按钮时采取的行动
     clickDown : function () {
 
-
-
-
             this.spritePlayerDown.setVisible(true);
             this.spritePlayerUp.setVisible(false);
 
@@ -231,11 +244,7 @@ var MainLayer = cc.Layer.extend({
             this.isUp = false;
             //console.log(this.isUp);
 
-            if(this.bgLayer.checkCollision(this.spritePlayerDown)){
-                console.log("发生碰撞了！");
-            }
-
-        this.move();
+            this.move();
 
     }
 

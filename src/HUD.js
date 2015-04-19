@@ -7,7 +7,7 @@ var HUD = cc.Layer.extend({
     egg : null,
     label : null,
     timeLabel : null,
-    time : 60,
+    time : times,
 
     ctor : function(){
 
@@ -39,7 +39,7 @@ var HUD = cc.Layer.extend({
         });
 
         //add time label
-        this.timeLabel = new cc.LabelTTF("60","黑体",24,cc.size(150,30),cc.TEXT_ALIGNMENT_CENTER);
+        this.timeLabel = new cc.LabelTTF(""+this.time,"黑体",24,cc.size(150,30),cc.TEXT_ALIGNMENT_CENTER);
         this.addChild(this.timeLabel);
         this.timeLabel.attr({
             x : 120,
