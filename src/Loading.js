@@ -30,10 +30,16 @@
  * @example
  * var lc = new cc.LoaderScene();
  */
-cc.LoaderScene = cc.Scene.extend({
+
+
+
+
+ZHLoaderScene = cc.Scene.extend({
     _interval : null,
     _label : null,
     _className:"LoaderScene",
+
+
     /**
      * Contructor of cc.LoaderScene
      * @returns {boolean}
@@ -58,14 +64,16 @@ cc.LoaderScene = cc.Scene.extend({
                 logoHeight = img.height;
                 self._initStage(img, cc.visibleRect.center);
             });
-            fontSize = 14;
+            fontSize = 24;
             lblHeight = -logoHeight / 2 - 10;
         }
+
         //loading percent
         var label = self._label = new cc.LabelTTF("死命加载中... 0%", "Arial", fontSize);
         label.setPosition(cc.pAdd(cc.visibleRect.center, cc.p(0, lblHeight)));
         label.setColor(cc.color(0, 0, 0));
         this.addChild(this._label, 10);
+
         return true;
     },
 
@@ -93,7 +101,7 @@ cc.LoaderScene = cc.Scene.extend({
      */
     onExit: function () {
         cc.Node.prototype.onExit.call(this);
-        var tmpStr = "Loading... 0%";
+        var tmpStr = "死命加载中... 0%\n";
         this._label.setString(tmpStr);
     },
 
@@ -117,7 +125,7 @@ cc.LoaderScene = cc.Scene.extend({
             function (result, count, loadedCount) {
                 var percent = (loadedCount / count * 100) | 0;
                 percent = Math.min(percent, 100);
-                self._label.setString("Loading... " + percent + "%");
+                self._label.setString("死命加载中... " + percent + "%");
             }, function () {
                 if (self.cb)
                     self.cb();
@@ -136,10 +144,10 @@ cc.LoaderScene = cc.Scene.extend({
         cc.director.runScene(new HelloWorldScene());
     }, this);
  */
-cc.LoaderScene.preload = function(resources, cb){
+ZHLoaderScene.preload = function(resources, cb){
     var _cc = cc;
     if(!_cc.loaderScene) {
-        _cc.loaderScene = new cc.LoaderScene();
+        _cc.loaderScene = new ZHLoaderScene();
         _cc.loaderScene.init();
     }
     _cc.loaderScene.initWithResources(resources, cb);

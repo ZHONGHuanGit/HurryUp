@@ -14,6 +14,8 @@ var mushNum = 4;
 
 var collisionAccuracy = 40;
 
-var points = 0;
+var points = 0;   // 记录分数
 
-var times = 30;
+var times = 20;  //每局游戏的时限
+
+var time = 20;  //当前剩余时间
