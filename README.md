@@ -53,3 +53,18 @@ HurryUp是使用Cocos2d-js编写的独立小游戏，界面简单，设置了四
 
 ![](https://raw.githubusercontent.com/ZHONGHuanGit/HurryUp/master/GameDescriptionImg/IMG_0444.PNG)
 
+
+障碍物碰了，或者时间到了，就挂了！
+
+![](https://raw.githubusercontent.com/ZHONGHuanGit/HurryUp/master/GameDescriptionImg/IMG_0449.PNG)
+
+![](https://raw.githubusercontent.com/ZHONGHuanGit/HurryUp/master/GameDescriptionImg/IMG_0448.PNG)
+
+
+在规定时间内，通过全部关卡，就胜利了。
+
+![](https://raw.githubusercontent.com/ZHONGHuanGit/HurryUp/master/GameDescriptionImg/IMG_0446.PNG)
+
+
+
+![](https://raw.githubusercontent.com/ZHONGHuanGit/HurryUp/master/GameDescriptionImg/IMG_0445.PNG)
